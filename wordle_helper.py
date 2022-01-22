@@ -1,5 +1,5 @@
 """
-Wordle list of words and returns highly possible characters,
+WordleHelper list of words and returns highly possible characters,
 ideal start words and find word which contains a substring.
 """
 import collections
@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 URL = "https://eslforums.com/5-letter-words/"
 header = {'User-Agent': 'Mozilla/5.0'}
 
-class Wordle:
+class WordleHelper:
     """Returns list of words and highly possible characters."""
     def __init__(self):
         self.words = []
@@ -104,32 +104,32 @@ class Wordle:
 
 def main():
     if len(sys.argv) > 3:
-        print('Usage: python3 wordle.py high_probable/ideal_start/substring_match')
+        print('Usage: python3 wordle_helper.py high_probable/ideal_start/substring_match')
         sys.exit()
 
-    wordle = Wordle()
+    wordle = WordleHelper()
     wordle.create_list_of_words()
 
     if sys.argv[1] == "high_probable":
         if len(sys.argv) == 3:
-            print('Usage: python3 wordle.py high_probable')
+            print('Usage: python3 wordle_helper.py high_probable')
             sys.exit()
         print("List of highly probable letters:", wordle.highly_probable_letters())
 
     elif sys.argv[1] == "ideal_start":
         if len(sys.argv) == 3:
-            print('Usage: python3 wordle.py ideal_start')
+            print('Usage: python3 wordle_helper.py ideal_start')
             sys.exit()
         print("List of ideal start word:", wordle.ideal_start_word())
 
     elif sys.argv[1] == "substring_match":
         if len(sys.argv) <3:
-            print('Usage: python3 wordle.py substring_match <substring>')
+            print('Usage: python3 wordle_helper.py substring_match <substring>')
             sys.exit()
         wordle.find_word_with_a_substring(sys.argv[2])
 
     else:
-        print('Usage: python3 wordle.py high_probable/ideal_start/substring_match')
+        print('Usage: python3 wordle_helper.py high_probable/ideal_start/substring_match')
         sys.exit()
 
 if __name__ == "__main__":
